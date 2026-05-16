@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Header Tags -->
+  <title>Smit Velani | Web Dev Self Assessment</title>
+  <meta name="description" content="HTML, CSS and JavaScript self assessment page for CS5610 Web Development at Northeastern University." />
+  <meta name="keywords" content="HTML, CSS, JavaScript, Web Development, Northeastern University" />
+  <meta name="author" content="Smitkumar Jayendrakumar Velani" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Smit Velani | Web Dev Self Assessment" />
+  <meta property="og:description" content="CS5610 HTML + CSS + JS Self Assessment" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://smitvelani.sites.northeastern.edu" />
+
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --red: #CC0000;
+      --dark: #111111;
+      --light: #f9f9f9;
+      --gray: #555;
+      --border: #ddd;
+      --font: 'Georgia', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      background: var(--dark);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav .logo span { color: var(--red); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+
+    nav ul li a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover { color: var(--red); }
+
+    /* ===== MAIN CONTENT ===== */
+    main { max-width: 960px; margin: 40px auto; padding: 0 24px; }
+
+    h1 { font-size: 2.2rem; margin-bottom: 8px; color: var(--dark); }
+    h1 span { color: var(--red); }
+
+    .subtitle { color: var(--gray); margin-bottom: 40px; font-size: 1rem; }
+
+    section { margin-bottom: 60px; }
+
+    h2 {
+      font-size: 1.5rem;
+      border-left: 4px solid var(--red);
+      padding-left: 12px;
+      margin-bottom: 16px;
+      color: var(--dark);
+    }
+
+    h3 { font-size: 1.1rem; margin: 16px 0 8px; color: var(--gray); }
+
+    p { margin-bottom: 12px; }
+
+    /* ===== HTML TAGS LIST ===== */
+    .tags-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      list-style: none;
+    }
+
+    .tags-list li {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    .tags-list li code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      color: var(--red);
+      margin-right: 8px;
+    }
+
+    /* ===== SEO TAGS LIST ===== */
+    .seo-list { list-style: none; }
+    .seo-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .seo-list li code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      color: var(--red);
+      margin-right: 8px;
+    }
+
+    /* ===== 3x3 GRID (divs and spans only, no CSS grid/table) ===== */
+    .grid-3x3 { width: 100%; }
+    .grid-row { overflow: hidden; }
+    .grid-cell {
+      display: inline-block;
+      width: 33.33%;
+      border: 1px solid var(--border);
+      padding: 20px;
+      text-align: center;
+      vertical-align: top;
+      background: white;
+      font-size: 0.9rem;
+    }
+
+    /* ===== BOX MODEL GALLERY ===== */
+    .box-gallery { display: flex; flex-direction: column; gap: 20px; }
+
+    .box-row { display: flex; gap: 20px; align-items: flex-start; }
+
+    .box-item {
+      background: #e8f4f8;
+      width: 120px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      text-align: center;
+      color: var(--dark);
+    }
+
+    /* Row 1: border variations */
+    .b1 { border: 0px solid var(--red); margin: 5px; padding: 5px; }
+    .b2 { border: 3px solid var(--red); margin: 5px; padding: 5px; }
+    .b3 { border: 8px solid var(--red); margin: 5px; padding: 5px; }
+
+    /* Row 2: margin variations */
+    .m1 { border: 2px solid #333; margin: 0px; padding: 5px; }
+    .m2 { border: 2px solid #333; margin: 10px; padding: 5px; }
+    .m3 { border: 2px solid #333; margin: 20px; padding: 5px; }
+
+    /* Row 3: padding variations */
+    .p1 { border: 2px solid green; margin: 5px; padding: 0px; }
+    .p2 { border: 2px solid green; margin: 5px; padding: 10px; }
+    .p3 { border: 2px solid green; margin: 5px; padding: 20px; }
+
+    .box-label { font-size: 0.8rem; color: var(--gray); margin-top: 4px; }
+
+    /* ===== FONT SIZES LIST ===== */
+    .font-list { list-style: none; }
+    .font-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ===== POSITIONING SECTION ===== */
+    .positioning-container {
+      position: relative;
+      height: 300px;
+      background: #f0f0f0;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    /* 1. Static positioning (default) */
+    .pos-static {
+      position: static;
+      background: #ffeeba;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #e0c050;
+      width: 200px;
+    }
+
+    /* 2. Relative positioning */
+    .pos-relative {
+      position: relative;
+      top: 20px;
+      left: 30px;
+      background: #c3e6cb;
+      padding: 10px;
+      border: 1px solid #5cb85c;
+      width: 200px;
+    }
+
+    /* 3. Absolute positioning */
+    .pos-absolute {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #bee5eb;
+      padding: 10px;
+      border: 1px solid #17a2b8;
+      width: 160px;
+    }
+
+    /* 4. Fixed positioning - footer stays at bottom */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 14px;
+      font-size: 0.85rem;
+    }
+
+    footer span { color: var(--red); }
+
+    /* padding so content doesn't hide behind fixed footer */
+    body { padding-bottom: 60px; }
+
+    /* ===== STICKY DEMO ===== */
+    .pos-sticky-demo {
+      position: sticky;
+      top: 60px;
+      background: #f8d7da;
+      padding: 10px;
+      border: 1px solid var(--red);
+      width: 200px;
+      margin: 10px;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-style: italic;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">Smit<span>Velani</span></div>
+    <ul>
+      <li><a href="#html-tags">HTML</a></li>
+      <li><a href="#seo">SEO</a></li>
+      <li><a href="#grid">Grid</a></li>
+      <li><a href="#box-model">Box Model</a></li>
+      <li><a href="#fonts">Fonts</a></li>
+      <li><a href="#positioning">Positioning</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <h1>CS5610 <span>Self Assessment</span></h1>
+    <p class="subtitle">HTML + CSS + JavaScript — Smitkumar Jayendrakumar Velani | Northeastern University</p>
+
+    <!-- SECTION 1: HTML TAGS -->
+    <section id="html-tags">
+      <h2>1. Top 10 Most Useful HTML Tags</h2>
+      <p>These are the HTML tags I find most useful when building web pages:</p>
+      <ul class="tags-list">
+        <li><code>&lt;div&gt;</code> Container for grouping elements</li>
+        <li><code>&lt;p&gt;</code> Paragraph text</li>
+        <li><code>&lt;a&gt;</code> Hyperlinks to other pages</li>
+        <li><code>&lt;img&gt;</code> Display images</li>
+        <li><code>&lt;ul&gt; / &lt;li&gt;</code> Unordered lists</li>
+        <li><code>&lt;form&gt;</code> User input forms</li>
+        <li><code>&lt;input&gt;</code> Text fields, checkboxes</li>
+        <li><code>&lt;nav&gt;</code> Navigation bar</li>
+        <li><code>&lt;section&gt;</code> Page sections</li>
+        <li><code>&lt;header&gt;</code> Page or section header</li>
+      </ul>
+
+      <h3>Sub-section 1.1: Semantic HTML</h3>
+      <p>Semantic tags like &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, and &lt;footer&gt; help browsers and screen readers understand page structure.</p>
+
+      <h3>Sub-section 1.2: Forms and Input</h3>
+      <p>Forms are essential for collecting user data. The &lt;form&gt;, &lt;input&gt;, &lt;label&gt;, and &lt;button&gt; tags work together.</p>
+
+      <h3>Sub-section 1.3: Media Tags</h3>
+      <p>Tags like &lt;img&gt;, &lt;video&gt;, and &lt;audio&gt; allow rich media content on pages.</p>
+
+      <h3>Sub-section 1.4: Linking and Navigation</h3>
+      <p>The &lt;a&gt; tag is fundamental for all navigation. Combined with &lt;nav&gt; it creates clear site structure.</p>
+    </section>
+
+    <!-- SECTION 2: SEO TAGS -->
+    <section id="seo">
+      <h2>2. Important SEO Header Tags</h2>
+      <p>After researching SEO best practices, here are the most important meta and header tags:</p>
+      <ul class="seo-list">
+        <li><code>&lt;title&gt;</code> Page title shown in browser tab and Google results — most important SEO tag</li>
+        <li><code>&lt;meta name="description"&gt;</code> Short description shown under title in search results</li>
+        <li><code>&lt;meta name="keywords"&gt;</code> Keywords related to your page content</li>
+        <li><code>&lt;meta name="robots"&gt;</code> Controls whether search engines index the page</li>
+        <li><code>&lt;link rel="canonical"&gt;</code> Tells Google which URL is the main version to avoid duplicates</li>
+        <li><code>&lt;meta property="og:title"&gt;</code> Open Graph title for social media sharing</li>
+        <li><code>&lt;meta property="og:description"&gt;</code> Description when shared on social media</li>
+        <li><code>&lt;h1&gt;</code> Main heading — should contain the primary keyword</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 3: 3x3 GRID (divs and spans only, no CSS grid/table) -->
+    <section id="grid">
+      <h2>3. 3x3 Grid Layout (divs + spans only)</h2>
+      <p>This 3x3 grid uses only <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> tags with inline-block display. No CSS grid, flexbox, or table used.</p>
+      <div class="grid-3x3">
+        <div class="grid-row">
+          <span class="grid-cell">Row 1, Col 1</span><span class="grid-cell">Row 1, Col 2</span><span class="grid-cell">Row 1, Col 3</span>
+        </div>
+        <div class="grid-row">
+          <span class="grid-cell">Row 2, Col 1</span><span class="grid-cell">Row 2, Col 2</span><span class="grid-cell">Row 2, Col 3</span>
+        </div>
+        <div class="grid-row">
+          <span class="grid-cell">Row 3, Col 1</span><span class="grid-cell">Row 3, Col 2</span><span class="grid-cell">Row 3, Col 3</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: BOX MODEL GALLERY -->
+    <section id="box-model">
+      <h2>4. Box Model Gallery</h2>
+      <p>Each row changes border, margin, and padding values. Each column shows three different values (0px, 5px, 10px or similar).</p>
+
+      <div class="box-gallery">
+
+        <div>
+          <h3>Row 1: Border variations (0px, 3px, 8px)</h3>
+          <div class="box-row">
+            <div><div class="box-item b1">border: 0px</div><div class="box-label">No border</div></div>
+            <div><div class="box-item b2">border: 3px</div><div class="box-label">Medium border</div></div>
+            <div><div class="box-item b3">border: 8px</div><div class="box-label">Thick border</div></div>
+          </div>
+        </div>
+
+        <div>
+          <h3>Row 2: Margin variations (0px, 10px, 20px)</h3>
+          <div class="box-row">
+            <div><div class="box-item m1">margin: 0px</div><div class="box-label">No margin</div></div>
+            <div><div class="box-item m2">margin: 10px</div><div class="box-label">Medium margin</div></div>
+            <div><div class="box-item m3">margin: 20px</div><div class="box-label">Large margin</div></div>
+          </div>
+        </div>
+
+        <div>
+          <h3>Row 3: Padding variations (0px, 10px, 20px)</h3>
+          <div class="box-row">
+            <div><div class="box-item p1">padding: 0px</div><div class="box-label">No padding</div></div>
+            <div><div class="box-item p2">padding: 10px</div><div class="box-label">Medium padding</div></div>
+            <div><div class="box-item p3">padding: 20px</div><div class="box-label">Large padding</div></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: FONT SIZES -->
+    <section id="fonts">
+      <h2>5. Font Sizes — Inline Styling</h2>
+      <p>Same text with 6 different font sizes using both absolute and relative units:</p>
+      <ul class="font-list">
+        <li style="font-size: 10px;">This text is 10px — <em>Absolute unit. Use when you need a fixed size that never changes regardless of screen or user settings. Example: small print disclaimers.</em></li>
+        <li style="font-size: 16px;">This text is 16px — <em>Absolute unit. Browser default body text size. Good for fixed UI elements like buttons.</em></li>
+        <li style="font-size: 1rem;">This text is 1rem — <em>Relative to root font size (usually 16px). Use for body text so it scales with user browser preferences for accessibility.</em></li>
+        <li style="font-size: 1.5rem;">This text is 1.5rem — <em>Relative unit. Use for subheadings. Scales proportionally with the root size.</em></li>
+        <li style="font-size: 2em;">This text is 2em — <em>Relative to parent font size. Use inside components where size should scale relative to the parent container.</em></li>
+        <li style="font-size: 3rem;">This text is 3rem — <em>Relative unit. Use for large display headings or hero text that should scale with the page.</em></li>
+      </ul>
+    </section>
+
+    <!-- SECTION 6: POSITIONING -->
+    <section id="positioning">
+      <h2>6. CSS Positioning Options</h2>
+      <p>Demonstrating 4 different positioning options: static, relative, absolute, and fixed (footer).</p>
+
+      <div class="positioning-container">
+
+        <!-- 1. Static -->
+        <div class="pos-static">
+          <strong>Static</strong> (default)<br>
+          <small>Normal document flow. No top/left/right/bottom. Use when you don't need special positioning.</small>
+        </div>
+
+        <!-- 2. Relative -->
+        <div class="pos-relative">
+          <strong>Relative</strong><br>
+          <small>Moved 20px down, 30px right from its normal position. Use when you need slight adjustments without affecting other elements.</small>
+        </div>
+
+        <!-- 3. Absolute -->
+        <div class="pos-absolute">
+          <strong>Absolute</strong><br>
+          <small>Positioned at top-right of its container. Use for tooltips, dropdowns, badges — elements that float over content.</small>
+        </div>
+
+        <!-- 4. Sticky -->
+        <div class="pos-sticky-demo">
+          <strong>Sticky</strong><br>
+          <small>Sticks to top when scrolling past it. Use for section headers or sidebars that should stay visible while scrolling.</small>
+        </div>
+
+      </div>
+
+      <p class="note">Note: The footer uses <strong>position: fixed</strong> — it stays at the bottom of the screen at all times regardless of scroll position. This is the most common use case for fixed positioning.</p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (position: fixed) -->
+  <footer>
+    <span>Smitkumar Jayendrakumar Velani</span> | CS5610 Web Development | Northeastern University | Spring 2026
+  </footer>
+
+</body>
+</html>
